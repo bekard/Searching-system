@@ -76,7 +76,6 @@ void SearchServer::AddQueriesStream(
 		const auto words = SplitIntoWords(current_query);
 
 		for (const auto& word : words) {
-//			auto vector_of_pairs = access.ref_to_value.Lookup(word);
 			auto vector_of_pairs = index.GetAccess().ref_to_value.Lookup(word);
 			for (const auto& [id, count] : vector_of_pairs) {
 				docid_count[id].first = id;
@@ -117,7 +116,6 @@ void InvertedIndex::Add(const string& document) {
 
 	const size_t docid = docs.size() - 1;
 	for (const auto& word : SplitIntoWords(docs.back())) {
-		//index[word].push_back(docid);
 		words_map[word][docid]++;
 	}
 }
